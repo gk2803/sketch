@@ -50,7 +50,7 @@ h1{
 }
 .slider{
   display:inline-block;
-  width:500px;
+  width:400px;
   height:12px;
   background: #b3b3b3;
   outline:none;
@@ -64,4 +64,28 @@ h1{
   height: 12px; /* Slider handle height */
   background: #4CAF50; /* Green background */
   cursor: pointer; /* Cursor on hover */
+}
+
+.buttons{
+  display:flex;
+  justify-content: space-between;
+  max-width:500px;
+  margin: 0 auto;
+  flex-wrap:wrap;
+
+}
+
+
+button{
+  font-family:sans-serif,cursive;
+  padding:5px;
+  border-radius:5px;
+  color:white;
+  line-height:27px;
+  font-size:15px;
+  border: 1px solid white;
+
+}
+.buttons-wrapper > *{
+
 }

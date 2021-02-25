@@ -68,8 +68,12 @@ function rand(){
 
 function colorize(){
   var pixels = wrapper.querySelectorAll('cell');
-  console.log(pixels);
-  pixels.forEach(pixel=> pixel.addEventListener('mouseover',black));
+
+  pixels.forEach(pixel=>{
+    pixel.removeEventListener("mouseover", randomColor);
+    pixel.addEventListener("mouseover", black);
+  }
+)
 }
 
 function black(){
@@ -81,7 +85,10 @@ function black(){
 
 function colorful(){
   var pixels = wrapper.querySelectorAll('cell');
-  pixels.forEach(pixel=> pixel.addEventListener("mouseover",randomColor));
+  pixels.forEach(pixel=>{
+    pixel.removeEventListener('mouseover',black);
+    pixel.addEventListener('mouseover', randomColor);
+  })
 }
 
 function randomColor(){

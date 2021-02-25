@@ -2,11 +2,19 @@
 const wrapper = document.querySelector('.wrapper');
 const dimensions ="700px";
 //slider const
-var slider = document.getElementById('sliderInput');
-let output = document.querySelector('#sliderLabel');
-
+const slider = document.getElementById('sliderInput');
+const output = document.querySelector('#sliderLabel');
 //clear button
 const clearButton = document.querySelector('#clear');
+
+//black button
+
+const blackButton = document.querySelector('#black');
+
+//random button
+
+const randomButton = document.querySelector('#randomColor');
+
 
 
 
@@ -23,7 +31,7 @@ function clearElements(){
 }
 
 function eraseElements(){
-  var pixels = wrapper.querySelectorAll('cell')
+  var pixels = wrapper.querySelectorAll('cell');
   pixels.forEach(pixel=> pixel.style.backgroundColor="white");
 
 }
@@ -42,7 +50,7 @@ function create(num){
     wrapper.appendChild(cell).className = 'grid-item';
   }
   var pixels = wrapper.querySelectorAll('cell');
-  pixels.forEach(pixel=> pixel.addEventListener('mouseover',randomColor));
+  pixels.forEach(pixel=> pixel.addEventListener('mouseover',black));
 }
 
 
@@ -54,16 +62,34 @@ function pixelSize(){
 }
 
 function rand(){
-  return Math.floor(Math.random()*255);
+  return Math.floor(Math.random()*256);
 }
-function randomColor(){
+
+
+function colorize(){
+  var pixels = wrapper.querySelectorAll('cell');
+  console.log(pixels);
+  pixels.forEach(pixel=> pixel.addEventListener('mouseover',black));
+}
+
+function black(){
+
   this.style.backgroundColor = "black";
+
+
+}
+
+function colorful(){
+  var pixels = wrapper.querySelectorAll('cell');
+  pixels.forEach(pixel=> pixel.addEventListener("mouseover",randomColor));
+}
+
+function randomColor(){
+  this.style.backgroundColor = `rgb(${rand()},${rand()},${rand()})`
 }
 
 function main(){
   create(12,12);
-
-
 }
 
 main();
@@ -71,5 +97,6 @@ main();
 
 //event listeners
 slider.addEventListener('mouseup',pixelSize);
-//sets all pixels to white
 clearButton.addEventListener('click',eraseElements);
+blackButton.addEventListener('click', colorize);
+randomButton.addEventListener('click', colorful);
